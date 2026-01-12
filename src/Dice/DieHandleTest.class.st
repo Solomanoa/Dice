@@ -15,3 +15,15 @@ DieHandleTest >> testCreationAdding [
 
 	self assert: handle diceNumber equals: 2.
 ]
+
+{ #category : 'tests' }
+DieHandleTest >> testRoll [
+	| handle|
+	handle := DieHandle new
+			addDie: (Die withFaces: 6);
+			addDie: (Die withFaces: 20);
+			yourself.
+
+	100 timesRepeat: [handle roll between: 2 and: 26]
+
+]

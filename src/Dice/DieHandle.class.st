@@ -32,3 +32,11 @@ DieHandle >> initialize [
 	 dice := OrderedCollection new
 
 ]
+
+{ #category : 'as yet unclassified' }
+DieHandle >> roll [ 
+   | res |
+	res := 0.
+	dice do: [ :each | res := res + each roll ].
+	^ res
+]
