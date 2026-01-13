@@ -20,6 +20,11 @@ DieHandle >> D: anInteger [
 ]
 
 { #category : 'accessing' }
+DieHandle >> adaptToNumber: anInteger andSend: aString [ 
+	self shouldBeImplemented.
+]
+
+{ #category : 'accessing' }
 DieHandle >> addDie: aDie [ 
 	dice add: aDie.
 ]
