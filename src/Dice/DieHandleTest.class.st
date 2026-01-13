@@ -27,3 +27,8 @@ DieHandleTest >> testRoll [
 	100 timesRepeat: [handle roll between: 2 and: 26]
 
 ]
+
+{ #category : 'tests' }
+DieHandleTest >> testSimpleHandle [
+		self assert: 2 D20 diceNumber = 2.
+]

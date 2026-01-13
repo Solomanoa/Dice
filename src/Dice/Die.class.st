@@ -48,7 +48,7 @@ Die >> roll [
 Die >> withFaces: aNumber [ 
 	"create and initialize a new die with a number faces"
 	| instance |
-	instance := self new.
+	instance := Die new.
 	instance faces: aNumber.
 	^ instance
 ]
