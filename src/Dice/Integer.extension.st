@@ -1,11 +1,13 @@
 Extension { #name : 'Integer' }
 
 { #category : '*Dice' }
+Integer >> D10 [ 
+	^ self D: 10.
+]
+
+{ #category : '*Dice' }
 Integer >> D20 [ 
-	| handle |
-	handle := DieHandle new.
-	self timesRepeat: [ handle addDie: (Die withFaces: 20) ].
-	^ handle
+	^ self D: 20.
 ]
 
 { #category : '*Dice' }

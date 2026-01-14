@@ -11,12 +11,20 @@ Class {
 	#package : 'Dice'
 }
 
-{ #category : 'as yet unclassified' }
-DieHandle >> D: anInteger [
-   | handle |
-	handle := DieHandle new.
-	self timesRepeat: [ handle addDie:( Die withFaces: anInteger)].
+{ #category : 'accessing' }
+DieHandle >> + aDieHandle [
+	| handle |
+	handle := self class new.
+	self dice do: [ :each | handle addDie: each ].
+	aDieHandle dice do: [ :each | handle addDie: each ].
 	^ handle
+	
+	
+]
+
+{ #category : 'accessing' }
+DieHandle >> D: anInteger [ 
+	self shouldBeImplemented.
 ]
 
 { #category : 'accessing' }
