@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'tests' }
+DieHandleTest >> testAddingAnHandleWIthADie [
+	| handle res |
+	handle := DieHandle new
+		addDie: (Die withFaces: 6);
+		addDie: (Die withFaces: 10);
+		yourself.
+	res := handle + (Die withFaces: 20).
+	self assert: res diceNumber equals: 3 
+]
+
+{ #category : 'tests' }
 DieHandleTest >> testCreationAdding [
 	| handle |
 	handle := DieHandle new
@@ -36,7 +47,7 @@ DieHandleTest >> testSimpleHandle [
 { #category : 'tests' }
 DieHandleTest >> testSumming [
 	| handle |
-	handle := 2 D20 + 3 D20.
+	handle := 2 D20 + 3 D10.
 	self assert: handle diceNumber equals: 5.
 	
 ]

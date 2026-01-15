@@ -11,15 +11,9 @@ Class {
 	#package : 'Dice'
 }
 
-{ #category : 'accessing' }
-DieHandle >> + aDieHandle [
-	| handle |
-	handle := self class new.
-	self dice do: [ :each | handle addDie: each ].
-	aDieHandle dice do: [ :each | handle addDie: each ].
-	^ handle
-	
-	
+{ #category : 'adding' }
+DieHandle >> + aDicable [
+	^ aDicable sumWithDieHandle: self
 ]
 
 { #category : 'accessing' }
@@ -27,9 +21,12 @@ DieHandle >> D: anInteger [
 	self shouldBeImplemented.
 ]
 
-{ #category : 'accessing' }
-DieHandle >> adaptToNumber: anInteger andSend: aString [ 
-	self shouldBeImplemented.
+{ #category : 'adding' }
+DieHandle >> addDiceTo: aDieHandle [
+	| handle |
+	handle := self class new.
+	handle dice do: [ :each | aDieHandle addDie: each ].
+	^ aDieHandle 
 ]
 
 { #category : 'accessing' }
@@ -52,6 +49,11 @@ DieHandle >> diceNumber [
 	^ dice size
 ]
 
+{ #category : 'enumerating' }
+DieHandle >> do: aFullBlockClosure [ 
+	self shouldBeImplemented.
+]
+
 { #category : 'as yet unclassified' }
 DieHandle >> initialize [
 	 super initialize.
@@ -65,4 +67,22 @@ DieHandle >> roll [
 	res := 0.
 	dice do: [ :each | res := res + each roll ].
 	^ res
+]
+
+{ #category : 'enumerating' }
+DieHandle >> sumWithDie: aDie [
+	| handle |
+	handle := self class new.
+	self dice do: [ :each | handle addDie: each ].
+	handle addDie: aDie.
+	^ handle
+]
+
+{ #category : 'enumerating' }
+DieHandle >> sumWithDieHandle: aDieHandle [
+	| handle |
+	handle := self class new.
+	self dice do: [ :each | handle addDie: each ].
+	aDieHandle dice do: [ :each | handle addDie: each ].
+	^ handle
 ]

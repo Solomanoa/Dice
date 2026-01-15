@@ -15,6 +15,25 @@ Class {
 	#package : 'Dice'
 }
 
+{ #category : 'arithmetic' }
+Die class >> + aDie [ 
+	| die |
+	die := DieHandle new
+		 addDie: self;
+		 addDie: aDie ;
+		 yourself.
+	^ die
+	
+]
+
+{ #category : 'accessing' }
+Die class >> dice [
+	| handle |
+	 handle := DieHandle new.
+	 
+	^ handle + self
+]
+
 { #category : 'accessing' }
 Die >> faces [
 	^faces
