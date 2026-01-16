@@ -17,12 +17,7 @@ Class {
 
 { #category : 'arithmetic' }
 Die class >> + aDie [ 
-	| die |
-	die := DieHandle new
-		 addDie: self;
-		 addDie: aDie ;
-		 yourself.
-	^ die
+	^ aDie sumWithDie: self
 	
 ]
 
@@ -32,6 +27,24 @@ Die class >> dice [
 	 handle := DieHandle new.
 	 
 	^ handle + self
+]
+
+{ #category : 'accessing' }
+Die class >> sumWithDie: aDie [
+	| handle |
+	handle := DieHandle new.
+	handle addDie: self.
+	handle addDie: aDie.
+	^ handle
+]
+
+{ #category : 'accessing' }
+Die class >> sumWithDieHandle: aDieHandle [
+	| handle |
+	handle := DieHandle new.
+	aDieHandle dice do: [ :each | handle addDie: each ].
+	handle addDie: self.
+	^ handle
 ]
 
 { #category : 'accessing' }
@@ -61,6 +74,15 @@ Die >> printOn: aStream [
 Die >> roll [
   ^ faces atRandom 
 	
+]
+
+{ #category : 'tests' }
+Die >> sumWithDie: aDie [
+	| handle |
+	handle := DieHandle new.
+	handle addDie: self.
+	handle addDie: aDie.
+	^ handle
 ]
 
 { #category : 'tests' }
